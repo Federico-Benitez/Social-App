@@ -4,14 +4,14 @@ const commentsResolvers = require("./comments");
 
 module.exports = {
   Post: {
-    likeCount(parent) {
+    likesCount(parent) {
       let likes = 0;
       parent.likes.forEach(() => {
         likes++;
       });
       return likes;
     },
-    commentCount: (parent) => {
+    commentsCount: (parent) => {
       let comments = 0;
       parent.comments.forEach(() => {
         comments++;
