@@ -60,7 +60,7 @@ module.exports = {
       context,
       info
     ) {
-      //TODO: Validate user data
+      //Validate user data
       const { valid, errors } = validateRegisterInput(
         username,
         email,
@@ -70,7 +70,7 @@ module.exports = {
       if (!valid) {
         throw new UserInputError("Error", { errors });
       }
-      //TODO: Make sure user doesnt already exist
+      //Make sure user doesnt already exist
       const user = await User.findOne({ username });
       if (user) {
         throw new UserInputError("El nombre de usuario ya existe", {
