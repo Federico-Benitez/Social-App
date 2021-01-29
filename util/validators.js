@@ -27,3 +27,18 @@ module.exports.validateRegisterInput = (
     valid: Object.keys(errors).length < 1 // Boleano por si existe algun error
   };
 };
+
+module.exports.validateLoginInput = (username, password) => {
+  const errors = {};
+  if (username.trim() === "") {
+    errors.username = "El nombre de usuario no puede estar vacio";
+  }
+  if (password === "") {
+    errors.password = "La contraseña no puede estar vacia";
+  }
+
+  return {
+    errors,
+    valid: Object.keys(errors).length < 1 // Boleano por si existe algun error
+  };
+};
