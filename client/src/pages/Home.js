@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import { Container, Grid } from "semantic-ui-react";
 
 import PostCard from "../component/PostCard";
+import PostForm from "../component/PostForm";
 import { AuthContext } from "../context/auth";
 
 function Home() {
@@ -24,6 +25,11 @@ function Home() {
         </Container>
       </Grid.Row>
       <Grid.Row>
+        {user && (
+          <Grid.Column>
+            <PostForm />
+          </Grid.Column>
+        )}
         {loading ? (
           <h1> Cargando...</h1>
         ) : (
