@@ -11,6 +11,7 @@ import MenuBar from "./component/MenuBar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Registro from "./pages/Registro";
+import SinglePost from "./pages/SinglePost";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/registro" component={Registro} />
+          <Route exact path="/post/:postId" component={SinglePost} />
         </Container>
       </Router>
     </AuthProvider>
