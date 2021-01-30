@@ -24,6 +24,9 @@ function PostForm() {
         }
       });
       values.body = "";
+    },
+    onError(err) {
+      console.log(err);
     }
   });
 
