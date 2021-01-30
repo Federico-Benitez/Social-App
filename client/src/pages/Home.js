@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 import { Container, Grid } from "semantic-ui-react";
 
 import PostCard from "../component/PostCard";
+import { AuthContext } from "../context/auth";
 
 function Home() {
+  const { user } = useContext(AuthContext);
+
   const { loading, data: { getAllPosts: posts } = {} } = useQuery(
     FETCH_POSTS_QUERY
   );
@@ -14,7 +17,10 @@ function Home() {
     <Grid columns={3}>
       <Grid.Row>
         <Container textAlign="center">
-          <h1>Publicaciones Recientes</h1>
+          <h1>
+            {/* <p>Hola {user ? user.username : null}</p> */}
+            Publicaciones Recientes
+          </h1>
         </Container>
       </Grid.Row>
       <Grid.Row>
