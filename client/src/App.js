@@ -14,7 +14,7 @@ import Registro from "./pages/Registro";
 
 function App() {
   return (
-    <AuthContext>
+    <AuthProvider>
       <Router>
         <Container>
           <MenuBar />
@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/registro" component={Registro} />
         </Container>
       </Router>
-    </AuthContext>
+    </AuthProvider>
   );
 }
 
