@@ -1,4 +1,3 @@
-import { rewriteURIForGET } from "@apollo/client";
 import { useState } from "react";
 
 export const useForm = (callback, initialState = {}) => {
