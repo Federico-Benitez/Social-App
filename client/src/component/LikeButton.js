@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { Button, Label, Icon } from "semantic-ui-react";
+import { Button, Label, Icon, Popup } from "semantic-ui-react";
 
 import { LIKE_POST_MUTATION } from "../util/graphql";
 
@@ -20,13 +20,25 @@ function LikeButton({ user, post: { id, likesCount, likes } }) {
 
   const likeButton = user ? (
     liked ? (
-      <Button color="red">
-        <Icon name="heart" />
-      </Button>
+      <Popup
+        content="Quitar like"
+        inverted
+        trigger={
+          <Button color="red">
+            <Icon name="heart" />
+          </Button>
+        }
+      />
     ) : (
-      <Button color="red" basic>
-        <Icon name="heart" />
-      </Button>
+      <Popup
+        content="Dar like"
+        inverted
+        trigger={
+          <Button color="red" basic>
+            <Icon name="heart" />
+          </Button>
+        }
+      />
     )
   ) : (
     <Button as={Link} to="/login" color="red" basic>
