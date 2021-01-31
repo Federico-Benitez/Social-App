@@ -2,31 +2,28 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Button, Confirm, Icon } from "semantic-ui-react";
 
-import { DELETE_POST_MUTATION, FETCH_POSTS_QUERY } from "../util/graphql";
+import {
+  DELETE_POST_MUTATION,
+  FETCH_POSTS_QUERY,
+  DELETE_COMMENT_MUTATION
+} from "../util/graphql";
 
-function DeleteButton({ postId, callback }) {
+function DeleteButton({ postId, commentId, callback }) {
   const [confirmOpen, setConfirmOpen] = useState(false);
 
-  const [deletePost] = useMutation(DELETE_POST_MUTATION, {
+  const mutation = commentId ? DELETE_COMMENT_MUTATION : DELETE_POST_MUTATION;
+
+  const [deletePostOrComment] = useMutation(mutation, {
     refetchQueries: [{ query: FETCH_POSTS_QUERY }],
 
     update(proxy) {
       setConfirmOpen(false);
 
-      //  const data = proxy.readQuery({
-
-      //      query: FETCH_POSTS_QUERY,
-
-      //  });
-
-      //  data.getPosts = data.getPosts.filter((p) => p.id !== postId);
-
-      //  proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
-
       if (callback) callback();
     },
     variables: {
-      postId
+      postId,
+      commentId
     }
   });
   return (
@@ -45,7 +42,7 @@ function DeleteButton({ postId, callback }) {
           console.log(postId);
           setConfirmOpen(false);
         }}
-        onConfirm={deletePost}
+        onConfirm={deletePostOrComment}
       />
     </>
   );

@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
 import { useQuery } from "@apollo/client";
-import { Container, Grid } from "semantic-ui-react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Grid
+} from "semantic-ui-react";
 
 import PostCard from "../component/PostCard";
 import PostForm from "../component/PostForm";
